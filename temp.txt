@@ -1,0 +1,17 @@
+STEP 1 -> USER CONFIGURATION
+
+Root User (Boss)
+        ↓
+IAM Group (Team + us team ki permissions)
+        ↓
+IAM User (Team ka member)
+        ↓
+Access Key (us member/application ki programmatic identity)
+        ↓
+CLI Integration by doing aws configure and provide details
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+STEP 2 -> S3 MGMT
+
+
