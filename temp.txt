@@ -14,4 +14,8 @@ CLI Integration by doing aws configure and provide details
 
 STEP 2 -> S3 MGMT
 
+Bucket Create
+        ↓
+Upload Raw file
+        ↓
 
