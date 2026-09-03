@@ -1,5 +1,4 @@
-from python_scripts.extract import read_csv_from_s3
+import pandas as pd
 
-customers=read_csv_from_s3('raw/customers.csv')
-
-print(customers)
+df=pd.DataFrame([1,2,3,4,None,5],columns=['sno'])
+print(df.where(pd.notnull(df),None))

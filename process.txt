@@ -9,6 +9,8 @@ IAM User (Team ka member)
 Access Key (us member/application ki programmatic identity)
         ↓
 CLI Integration by doing aws configure and provide details
+        ↓
+Console Access Enabled
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -19,6 +21,8 @@ Bucket Create
 Upload Raw file
         ↓
 Extract Raw file into CSV
+        ↓
+Implement Ingestion for metadata to raw data
         ↓
 
 
