@@ -24,5 +24,13 @@ Extract Raw file into CSV
         ↓
 Implement Ingestion for metadata to raw data
         ↓
+Load Bronze
+        ↓
 
+        ↓
 
+        ↓
+
+        ↓
+
+        ↓
