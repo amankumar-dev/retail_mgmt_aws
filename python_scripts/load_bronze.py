@@ -45,4 +45,4 @@ def bronze_load():
     print(f"\n✅ Bronze load complete for all {len(RAW_FILES)} files. batch_id = {batch_id}")
     
 
-    
+bronze_load()

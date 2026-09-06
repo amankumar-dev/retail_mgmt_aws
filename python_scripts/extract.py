@@ -16,3 +16,15 @@ def read_csv_from_s3(s3_key):
     
     return df
 
+
+def read_parquet_from_s3(s3_key):
+    response=s3.get_object(
+        Bucket=bucket_name,
+        Key=s3_key
+    )
+    
+    df=pd.read_parquet(BytesIO(response['Body'].read()),engine='pyarrow')
+    
+    return df
+
+
