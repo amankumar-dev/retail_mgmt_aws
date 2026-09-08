@@ -26,9 +26,9 @@ Implement Ingestion for metadata to raw data
         ↓
 Load Bronze
         ↓
-
+Load Silver after transformation
         ↓
-
+Load Gold after transformation
         ↓
 
         ↓

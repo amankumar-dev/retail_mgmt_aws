@@ -10,7 +10,7 @@ def write_s3_gold(df,dataset):
     parquet_buffer=BytesIO()
     df=df.to_parquet(parquet_buffer,engine='pyarrow',index=False)
     
-    gold_key=f'gold/{dataset}'
+    gold_key=f'gold/{dataset}/{dataset}.parquet'
     
     s3.put_object(
         Bucket=BUCKET_NAME,
@@ -45,7 +45,7 @@ def gold_load():
     write_s3_gold(dim_cust,'dim_customers')
     write_s3_gold(dim_sell,'dim_sellers')
     write_s3_gold(dim_prod,'dim_products')
-    write_s3_gold(fact_table,'fact_table')
+    write_s3_gold(fact_table,'fact_order_items')
     
     print("\n✅ Gold load complete: dim_customers, dim_products, dim_sellers, fact_order_items")
     
