@@ -70,6 +70,7 @@ def revenue_by_state():
         WHERE f.cust_state IS NOT NULL
         GROUP BY f.cust_state
         ORDER BY total_rev DESC
+        LIMIT 10
     '''
     return run_ddl(query)
 
@@ -88,11 +89,3 @@ def product_contribution():
             LIMIT 10
     '''
     return run_ddl(query)
-
-print(top_customer())
-print(repeat_customer())
-print(revenue_per_customer())
-print(monthly_revenue())
-print(revenue_by_state())
-print(product_contribution())
-
