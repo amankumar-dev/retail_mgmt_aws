@@ -49,4 +49,8 @@ Glue Setup
 
 STEP 5 -> EC2
 
+Create and Launch Instance
+        ↓
+
+        ↓
 

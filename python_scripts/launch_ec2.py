@@ -95,6 +95,20 @@ def get_latest_amazon_linux_ami():
     print(f"Using AMI: {ami_id} ({images[0]['Name']})")
     return ami_id
 
+def find_existing_instance():
+    response=ec2.describe_instances(
+        Filters=[
+            {"Name":"tag:Name","Values":[INSTANCE_NAME]},
+            {"Name": "instance-state-name", "Values": ["running", "pending", "stopped"]}
+        ]
+    )
+    
+    for reservation in response['Reservations']:
+        for instance in reservation['Instances']:
+            return instance['InstanceId'], instance['State']['Name'], instance.get('PublicIpAddress')
+        
+    return None,None,None
+
 def launch_instance(sg_id,ami_id):
     response=ec2.run_instances(
         ImageId=ami_id,
@@ -134,6 +148,18 @@ def launch_instance(sg_id,ami_id):
 
 create_key_pair()
 sg_id=get_or_create_security_group()
-ami_id=get_latest_amazon_linux_ami()
-launch_instance(sg_id,ami_id)
-    
+existing_id,state,existing_ip=find_existing_instance()
+
+if existing_id and state in ("running", "pending"):
+    print(f"\nInstance '{INSTANCE_NAME}' is already {state}: {existing_id}")
+    print(f"Public IP: {existing_ip}")
+    print(f"\nTo connect via SSH:")
+    print(f"  ssh -i {KEY_FILE} ec2-user@{existing_ip}")
+elif existing_id and state == "stopped":
+    print(f"\nInstance '{INSTANCE_NAME}' exists but is stopped: {existing_id}")
+    print("Start it with:")
+    print(f"  aws ec2 start-instances --instance-ids {existing_id}")
+else:
+    ami_id = get_latest_amazon_linux_ami()
+    launch_instance(sg_id, ami_id)
+        
