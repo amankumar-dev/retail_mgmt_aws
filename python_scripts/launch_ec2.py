@@ -162,4 +162,4 @@ elif existing_id and state == "stopped":
 else:
     ami_id = get_latest_amazon_linux_ami()
     launch_instance(sg_id, ami_id)
-        
+
