@@ -163,3 +163,4 @@ else:
     ami_id = get_latest_amazon_linux_ami()
     launch_instance(sg_id, ami_id)
 
+#ssh -i retail_pipeline_key.pem ec2-user@98.84.157.69
