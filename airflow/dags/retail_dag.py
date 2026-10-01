@@ -23,11 +23,6 @@ with DAG(
     tags=['retail','medallion']
 ) as dag:
     
-    upload_dataset=BashOperator(
-        task_id='upload_dataset',
-        bash_command=run_module('upload_datasets')
-    )
-    
     bronze_load=BashOperator(
         task_id='bronze_load',
         bash_command=run_module('load_bronze')
@@ -53,4 +48,4 @@ with DAG(
         bash_command=run_module('generate_reports')
     )
     
-    upload_dataset >> bronze_load >> silver_load >> gold_load >> athena_setup >> reports
+    bronze_load >> silver_load >> gold_load >> athena_setup >> reports
